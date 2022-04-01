@@ -1,0 +1,48 @@
+.button
+    display: block
+    box-sizing: border-box
+    padding: 15px 45px
+    border: none
+    border-radius: 100px
+    font-family: $Georgia
+    font-size: 17px
+    line-height: 130%
+    letter-spacing: 6%
+    color: dark-3xl
+    transition-duration: 0.4s
+    &_primary
+        background-color: $primary
+        &:hover
+            background-color: $primary-light
+    &_secondary
+        padding: 13px 43px
+        background-color: $light-xl
+        border: 2px solid $primary
+        &:hover
+            background-color: $primary-light
+            border: 2px solid $primary-light
+
+.button-round
+    @include h4
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 52px
+    height: 52px
+    border-radius: 100%
+    border: 2px solid $primary
+    color: $dark-3xl
+    text-decoration: none
+    transition-duration: 0.4s
+    &:hover
+        background-color: $primary-light
+        border: 2px solid $primary-light
+    &_active
+        background-color: $primary
+    &_inactive
+        border: 2px solid $dark-s
+        color: $dark-s
+        &:hover
+            background-color: $light-xl
+            border: 2px solid $dark-s
+            cursor: default
