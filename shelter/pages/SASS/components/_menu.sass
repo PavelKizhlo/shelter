@@ -1,0 +1,15 @@
+.menu
+    &__list
+        list-style: none
+    &__item
+        &_active
+            .menu__link
+                color: $light-s
+                border-bottom: 3px solid $primary
+    &__link
+        @include paragraph-l
+        text-decoration: none
+        color: $dark-s
+        transition-duration: 0.4s
+        &:hover
+            color: $light-s
