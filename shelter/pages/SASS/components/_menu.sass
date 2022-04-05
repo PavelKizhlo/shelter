@@ -10,14 +10,20 @@
             margin-right: 0
         &_active
             .menu__link
-                color: $light-s
+                color: $dark-l
                 border-bottom: 3px solid $primary
+                &_main
+                    color: $light-s
     &__link
         @include paragraph-l
         line-height: 22px
         display: block
         text-decoration: none
-        color: $dark-s
+        color: $dark-l
         transition-duration: 0.4s
         &:hover
-            color: $light-s
+            color: $dark-3xl
+        &_main
+            color: $dark-s
+            &:hover
+                color: $light-s
