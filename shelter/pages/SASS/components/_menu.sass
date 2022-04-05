@@ -1,13 +1,21 @@
 .menu
     &__list
+        display: flex
+        margin: 0
+        padding: 0
         list-style: none
     &__item
+        margin-right: 36px
+        &:last-child
+            margin-right: 0
         &_active
             .menu__link
                 color: $light-s
                 border-bottom: 3px solid $primary
     &__link
         @include paragraph-l
+        line-height: 22px
+        display: block
         text-decoration: none
         color: $dark-s
         transition-duration: 0.4s

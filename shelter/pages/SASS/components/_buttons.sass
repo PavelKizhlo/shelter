@@ -1,14 +1,15 @@
 .button
-    display: block
+    display: inline-block
     box-sizing: border-box
     padding: 15px 45px
     border: none
     border-radius: 100px
     font-family: $Georgia
     font-size: 17px
-    line-height: 130%
-    letter-spacing: 6%
-    color: dark-3xl
+    line-height: 22px
+    letter-spacing: 0.06em
+    color: $dark-3xl
+    text-decoration: none
     transition-duration: 0.4s
     &_primary
         background-color: $primary
@@ -31,6 +32,7 @@
     height: 52px
     border-radius: 100%
     border: 2px solid $primary
+    background-color: transparent
     color: $dark-3xl
     text-decoration: none
     transition-duration: 0.4s
@@ -46,3 +48,12 @@
             background-color: $light-xl
             border: 2px solid $dark-s
             cursor: default
+    &_prev
+        background: url(../../assets/icons/arrow.svg) no-repeat center
+        .visually-hidden
+            visibility: hidden
+    &_next
+        background: url(../../assets/icons/arrow.svg) no-repeat center
+        transform: rotate(180deg)
+        .visually-hidden
+            visibility: hidden
