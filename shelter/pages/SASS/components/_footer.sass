@@ -1,0 +1,95 @@
+.footer
+    .container
+        display: flex
+        padding-top: 40px
+        padding-bottom: 0
+        background-image: url(../../assets/images/noize-pattern.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%)
+    &__contacts
+        margin-right: 160px
+    &__title
+        @include h3
+        margin: 0
+        color: $light-xl
+    &__locations
+        margin-right: 160px
+    &__image
+        width: 300px
+        height: 310px
+
+.contacts
+    min-width: 279px
+    &__title
+        margin-bottom: 40px
+        padding-top: 17px
+    &__mail
+        @include h4
+        position: relative
+        display: block
+        margin-bottom: 40px
+        padding: 4px 0 5px 60px
+        color: $primary
+        text-decoration: none
+        &::before
+            display: block
+            content: ''
+            position: absolute
+            left: 0
+            top: 3px
+            width: 40px
+            height: 26px
+            background: url(../../assets/icons/mail.svg) no-repeat
+    &__phone
+        @include h4
+        position: relative
+        display: block
+        padding: 4px 0 5px 60px
+        color: $primary
+        text-decoration: none
+        &::before
+            display: block
+            content: ''
+            position: absolute
+            left: 0
+            top: 0
+            width: 40px
+            height: 32px
+            background: url(../../assets/icons/phone.svg) no-repeat
+
+.locations
+    min-width: 301px
+    &__title
+        margin-bottom: 32px
+        padding-top: 18px
+    &__boston
+        @include h4
+        position: relative
+        display: block
+        margin-bottom: 32px
+        padding-left: 41px
+        color: $primary
+        text-decoration: none
+        &::before
+            display: block
+            content: ''
+            position: absolute
+            left: -1px
+            top: 6px
+            width: 22px
+            height: 32px
+            background: url(../../assets/icons/pin.svg) no-repeat
+    &__london
+        @include h4
+        position: relative
+        display: block
+        padding: 5px 0 5px 41px
+        color: $primary
+        text-decoration: none
+        &::before
+            display: block
+            content: ''
+            position: absolute
+            left: -1px
+            top: 1px
+            width: 22px
+            height: 32px
+            background: url(../../assets/icons/pin.svg) no-repeat
