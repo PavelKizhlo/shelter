@@ -519,6 +519,7 @@ img {
 
 .card:hover {
   background-color: #ffffff;
+  cursor: pointer;
 }
 
 .card:hover .card__button {
@@ -607,7 +608,7 @@ img {
 }
 
 .contacts {
-  min-width: 279px;
+  min-width: 23.25%;
 }
 
 .contacts__title {
@@ -665,7 +666,7 @@ img {
 }
 
 .locations {
-  min-width: 301px;
+  min-width: 25.09%;
 }
 
 .locations__title {
@@ -755,7 +756,7 @@ img {
 }
 
 .start-screen__header {
-  margin-bottom: 60px;
+  margin-bottom: 5%;
 }
 
 .start-screen__wrapper {
@@ -768,8 +769,8 @@ img {
 }
 
 .start-screen__content {
-  width: 460px;
-  margin-top: 163px;
+  width: 38.33%;
+  margin-top: 13.58%;
 }
 
 .start-screen__title {
@@ -803,11 +804,11 @@ img {
 .about__image {
   width: 300px;
   height: 408px;
-  margin-right: 120px;
+  margin-right: 10%;
 }
 
 .about__content {
-  width: 430px;
+  width: 35.83%;
 }
 
 .about__title {
@@ -831,12 +832,12 @@ img {
 
 .our-friends__title {
   margin: 0;
-  margin-bottom: 60px;
+  margin-bottom: 5%;
   text-align: center;
 }
 
 .our-friends .slider {
-  margin-bottom: 60px;
+  margin-bottom: 5%;
 }
 
 .help .container {
@@ -845,12 +846,11 @@ img {
 
 .help__title {
   margin: 0;
-  margin-bottom: 60px;
+  margin-bottom: 5%;
   text-align: center;
 }
 
 .help__list {
-  width: 1026px;
   min-height: 280px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -950,11 +950,11 @@ img {
 .donation__image {
   width: 505px;
   height: 261px;
-  margin-right: 30px;
+  margin-right: 2.5%;
 }
 
 .donation__content {
-  width: 380px;
+  width: 31.67%;
 }
 
 .donation__title {
@@ -975,6 +975,12 @@ img {
   border-radius: 9px;
   background-color: #f1cdb3;
   text-decoration: none;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+}
+
+.donation__credit-card:hover {
+  background-color: #fddcc4;
 }
 
 .donation__credit-card::before {
@@ -991,9 +997,16 @@ img {
   margin: 0;
 }
 
+.pets-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
 .pets-header .container {
   padding-top: 30px;
   padding-bottom: 30px;
+  background-color: #ffffff;
 }
 
 .our-pets .container {
@@ -1002,12 +1015,12 @@ img {
 
 .our-pets__title {
   margin: 0;
-  margin-bottom: 60px;
+  margin-bottom: 5%;
   text-align: center;
 }
 
 .our-pets__item-container {
-  margin-bottom: 60px;
+  margin-bottom: 5%;
 }
 
 .our-pets__item-container {
