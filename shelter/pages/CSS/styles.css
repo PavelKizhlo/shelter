@@ -472,6 +472,16 @@ img {
   background-color: #f1cdb3;
 }
 
+.button-round_active-page {
+  background-color: #f1cdb3;
+  cursor: default;
+}
+
+.button-round_active-page:hover {
+  background-color: #f1cdb3;
+  border-color: #f1cdb3;
+}
+
 .button-round_inactive {
   border: 2px solid #cdcdcd;
   color: #cdcdcd;
