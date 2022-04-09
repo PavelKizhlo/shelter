@@ -20,34 +20,34 @@
     font-display: swap
 
 .section-title
-    @include h3
+    @extend %h3
     color: $dark-l
 
 .start-screen
     &__title
-        @include h2
+        @extend %h2
         color: $light-xl
     &__text
-        @include paragraph-l
+        @extend %paragraph-l
         color: $light-xl
 
 .about
     &__text
-        @include paragraph-l
+        @extend %paragraph-l
         color: $dark-xl
 
 .help
     &__link
-        @include h4
+        @extend %h4
         color: $dark-l
 
 .donation
     &__subtitle
-        @include h5
+        @extend %h5
         color: $dark-l
     &__credit-card
-        @include h4
+        @extend %h4
         color: $dark-l
     &__legal-info
-        @include paragraph-s
+        @extend %paragraph-s
         color: $dark-m

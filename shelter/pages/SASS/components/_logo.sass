@@ -2,14 +2,14 @@
     display: block
     text-decoration: none
     &__title
-        @include logo-title
+        @extend %logo-title
         margin: 0
         margin-bottom: 6px
         color: $dark-l
         &_main
             color: $primary
     &__subtitle
-        @include logo-subtitle
+        @extend %logo-subtitle
         padding-left: 4px
         color: $dark-l
         &_main
