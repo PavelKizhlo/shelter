@@ -4,3 +4,15 @@
         grid-template-columns: repeat(4, 270px)
         column-gap: 40px
         row-gap: 30px
+        @include media-tablet
+            grid-template-columns: repeat(2, 1fr)
+    &__item
+        &:nth-child(2n+1)
+            @include media-tablet
+                justify-self: end
+        &:nth-child(7)
+            @include media-tablet
+                display: none
+        &:nth-child(8)
+            @include media-tablet
+                display: none
