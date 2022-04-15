@@ -1,0 +1,22 @@
+.help
+    &__list
+        min-height: 280px
+        display: flex
+        flex-wrap: wrap
+        justify-content: center
+        align-content: space-between
+        margin: 0 auto
+        padding: 0
+        list-style: none
+        @include media-tablet
+            display: grid
+            grid-template-columns: 1fr 0.86fr 1fr
+            row-gap: 7.16vw
+    &__item
+        margin-right: 119px
+        @include media-tablet
+            margin-right: 0
+        &:nth-child(5)
+            margin-right: 0
+        &:last-child
+            margin-right: 0

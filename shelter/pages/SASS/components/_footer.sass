@@ -4,23 +4,37 @@
         padding-top: 40px
         padding-bottom: 0
         background-image: url(../../assets/images/noize-pattern.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%)
+        @include media-tablet
+            flex-direction: column
+            align-items: center
+            padding-top: 30px
+    &__wrapper
+        display: flex
+        @include media-tablet
+            margin-bottom: 65px
     &__contacts
         margin-right: 160px
+        @include media-tablet
+            margin-right: 60px
     &__title
         @extend %h3
         margin: 0
         color: $light-xl
     &__locations
         margin-right: 160px
+        @include media-tablet
+            margin-right: 0
     &__image
         width: 300px
         height: 310px
 
 .contacts
-    min-width: 23.25%
+    width: 279px
     &__title
         margin-bottom: 40px
         padding-top: 17px
+        @include media-tablet
+            padding-top: 0
     &__mail
         @extend %h4
         position: relative
@@ -56,10 +70,12 @@
             background: url(../../assets/icons/phone.svg) no-repeat
 
 .locations
-    min-width: 25.09%
+    width: 301px
     &__title
         margin-bottom: 32px
         padding-top: 18px
+        @include media-tablet
+            padding-top: 0
     &__boston
         @extend %h4
         position: relative
