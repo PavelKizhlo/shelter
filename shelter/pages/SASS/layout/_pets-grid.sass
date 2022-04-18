@@ -6,13 +6,16 @@
         row-gap: 30px
         @include media-tablet
             grid-template-columns: repeat(2, 1fr)
+        @include media-mobile
+            grid-template-columns: 1fr
+            justify-items: center
     &__item
         &:nth-child(2n+1)
             @include media-tablet
                 justify-self: end
-        &:nth-child(7)
+        &:nth-child(n+7)
             @include media-tablet
                 display: none
-        &:nth-child(8)
-            @include media-tablet
+        &:nth-child(n+4)
+            @include media-mobile
                 display: none

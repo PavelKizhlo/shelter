@@ -18,3 +18,11 @@
     background-color: $light-xl
     @include media-tablet
         padding: 30px 30px
+    @include media-mobile
+        padding: 30px 10px
+        .burger
+            background-color: black
+            &:before
+                background-color: black
+            &:after
+                background-color: black
