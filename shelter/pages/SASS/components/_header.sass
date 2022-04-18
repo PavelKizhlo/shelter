@@ -2,6 +2,12 @@
     display: flex
     justify-content: space-between
     align-items: center
+    .burger
+        @include media-mobile
+            display: block
+    .menu
+        @include media-mobile
+            display: none
 
 .pets-header
     position: sticky

@@ -1,0 +1,23 @@
+.burger
+    position: relative
+    display: none
+    width: 30px
+    height: 2px
+    margin-right: 43px
+    background-color: $primary
+    &:before
+        position: absolute
+        content: ''
+        display: block
+        top: 10px
+        width: 30px
+        height: 2px
+        background-color: $primary
+    &:after
+        position: absolute
+        content: ''
+        display: block
+        bottom: 10px
+        width: 30px
+        height: 2px
+        background-color: $primary

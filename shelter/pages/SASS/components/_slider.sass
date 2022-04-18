@@ -2,17 +2,38 @@
     display: flex
     justify-content: space-between
     align-items: center
+    @include media-mobile
+        margin: 0 auto
+    &__prev
+        @include media-mobile
+            order: 2
+            margin-right: 25vw
+    &__next
+        @include media-mobile
+            order: 3
+    @include media-mobile
+        width: 300px
+        flex-wrap: wrap
+        justify-content: center
+        order: 1
     &__inner
         display: flex
+        @include media-mobile
+            margin-bottom: 20px
     &__item
         margin-right: 90px
         @include media-tablet
             margin-right: 5.21vw
-        &:last-child
-            margin-right: 0
         &:nth-child(3)
+            margin-right: 0
             @include media-tablet
+                display: none
+            @include media-mobile
                 display: none
         &:nth-child(2)
             @include media-tablet
                 margin-right: 0
+            @include media-mobile
+                display: none
+        @include media-mobile
+            margin-right: 0

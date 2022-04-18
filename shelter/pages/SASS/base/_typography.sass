@@ -22,11 +22,15 @@
 .section-title
     @extend %h3
     color: $dark-l
+    @include media-mobile
+        @include h3-mobile
 
 .start-screen
     &__title
         @extend %h2
         color: $light-xl
+        @include media-mobile
+            @include h3-mobile
     &__text
         @extend %paragraph-l
         color: $light-xl
@@ -40,14 +44,21 @@
     &__link
         @extend %h4
         color: $dark-l
+        @include media-mobile
+            @include h5
 
 .donation
     &__subtitle
         @extend %h5
         color: $dark-l
+        @include media-mobile
+            letter-spacing: 0
+            line-height: 23px
     &__credit-card
         @extend %h4
         color: $dark-l
+        @include media-mobile
+            @include h5
     &__legal-info
         @extend %paragraph-s
         color: $dark-m

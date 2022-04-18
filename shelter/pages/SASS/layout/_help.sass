@@ -12,9 +12,16 @@
             display: grid
             grid-template-columns: 1fr 0.86fr 1fr
             row-gap: 7.16vw
+        @include media-mobile
+            display: grid
+            grid-template-columns: 1fr 1fr
+            row-gap: 9.38vw
+            column-gap: 20px
     &__item
         margin-right: 119px
         @include media-tablet
+            margin-right: 0
+        @include media-mobile
             margin-right: 0
         &:nth-child(5)
             margin-right: 0
