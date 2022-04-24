@@ -1,23 +1,19 @@
 .burger
-    position: relative
-    display: none
-    width: 30px
-    height: 2px
     margin-right: 43px
-    background-color: $primary
-    &:before
-        position: absolute
-        content: ''
-        display: block
-        top: 10px
+    &__line
+        display: none
         width: 30px
         height: 2px
+        margin-top: 8px
+        margin-bottom: 8px
         background-color: $primary
-    &:after
-        position: absolute
-        content: ''
-        display: block
-        bottom: 10px
-        width: 30px
-        height: 2px
-        background-color: $primary
+        transition-duration: 0.4s
+    &_rotate
+        transform: rotate(90deg)
+        transition-delay: 0.4s
+        transition-duration: 0.8s
+
+.pets-header
+    .burger
+        &__line
+            background-color: black

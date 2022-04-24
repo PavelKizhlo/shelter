@@ -11,12 +11,16 @@
 
 <body>
 
-    <header class="header pets-header">
+    <header class="header pets-header menu-closed">
         <a href="../main/index.html" class="header__logo logo">
             <h1 class="logo__title">Cozy House</h1>
             <span class="logo__subtitle">Shelter for pets in Boston</span>
         </a>
-        <span class="burger"></span>
+        <div class="burger">
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+            <span class="burger__line"></span>
+        </div>
         <nav class="menu">
             <ul class="menu__list">
                 <li class="menu__item"><a href="../main/index.html" class="menu__link">About the shelter</a></li>
@@ -27,6 +31,8 @@
             </ul>
         </nav>
     </header>
+
+    <div class="menu-fade"></div>
 
     <section class="our-pets">
         <div class="container">
@@ -124,6 +130,8 @@
                 alt="footer-puppy">
         </div>
     </footer>
+
+    <script src="../JS/script.js"></script>
 
 </body>
 

@@ -27,3 +27,23 @@
             color: $dark-s
             &:hover
                 color: $light-s
+
+.menu-opend
+    @include media-mobile
+        .menu
+            position: absolute
+            left: 0
+            right: 0
+            margin: auto
+            display: block
+            grid-column: 1/3
+            &__list
+                flex-direction: column
+                align-items: center
+            &__item
+                margin-right: 0
+                margin-bottom: 40px
+                &:last-child
+                    margin-bottom: 0
+            &__link
+                @include paragraph-mobile-menu

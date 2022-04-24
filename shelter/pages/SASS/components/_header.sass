@@ -3,8 +3,9 @@
     justify-content: space-between
     align-items: center
     .burger
-        @include media-mobile
-            display: block
+        &__line
+            @include media-mobile
+                display: block
     .menu
         @include media-mobile
             display: none
@@ -20,9 +21,51 @@
         padding: 30px 30px
     @include media-mobile
         padding: 30px 10px
-        .burger
-            background-color: black
-            &:before
-                background-color: black
-            &:after
-                background-color: black
+        &.menu-opend
+            background-color: white
+
+.menu-opend
+    @include media-mobile
+        position: fixed
+        z-index: 2
+        display: grid
+        grid-template-columns: auto auto
+        align-content: start
+        top: 0
+        right: 0
+        width: 320px
+        height: 100%
+        padding: 0 10px
+        padding-top: 30px
+        background-color: $dark-3xl
+        // transform: translateX(100%)
+        // transition-property: position
+        // transition-duration: 1s
+        animation-name: slide-in
+        animation-duration: 0.8s
+        transition-timing-function: ease
+        &~.start-screen__wrapper
+            margin-top: 120px
+        &~.our-pets
+            margin-top: 120px
+        .menu
+            display: block
+
+.menu-closed
+    @include media-mobile
+        // transform: translateX(-100%)
+        // animation-name: slide-out
+        // animation-duration: 0.8s
+        // transition-timing-function: ease
+
+.menu-opend~.menu-fade
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background-color: $dark-3xl
+    opacity: 0.6
+    z-index: 1
+    animation-name: fade
+    animation-duration: 0.8s
