@@ -8,41 +8,60 @@ const sliderInner = document.querySelector('.slider__inner');
 const leftSet = document.querySelector('.slider__left-set');
 const activeSet = document.querySelector('.slider__active-set');
 const rightSet = document.querySelector('.slider__right-set');
+const popup = document.querySelector('.popup');
 
 let activeRandom;
 let leftRan
 let rightRandom;
 
 
-// Открывание и закрывание меню при нажатии на бургер
+// Открывание меню при нажатии на бургер, случаи закрывания
 
-function toggleMenu() {
-    header.classList.toggle('menu-closed');
-    header.classList.toggle('menu-opend');
-    burger.classList.toggle('burger_rotate');
+function showMenu() {
+    header.classList.remove('menu-closed');
+    header.classList.add('menu-opend');
+    header.addEventListener('click', (evt) => {
+        if (evt.target.tagName === 'A') {
+            closeMenu();
+        }
+    });
 
-    if (header.classList.contains('menu-opend')) {
-        document.body.style.overflow = 'hidden';
-        header.addEventListener('click', closeMenu);
-        fade.addEventListener('click', closeMenu);
-    } else {
-        document.body.style.overflow = '';
-    }
+    burger.classList.add('burger_rotate');
+    burger.classList.remove('burger_horizontal');
+    burger.addEventListener('click', closeMenu);
+
+    fade.addEventListener('click', (evt) => {
+        if (evt.target === fade) {
+            closeMenu();
+        }
+    });
+
+    document.body.style.overflow = 'hidden';
 }
 
-// Закрывание меню при переходе по ссылкам и при нажатии на подложку
+// Закрывание меню с анимацией
 
-function closeMenu(evt) {
-    if (evt.target.tagName === 'A' || evt.target === fade) {
+function closeMenu() {
+    header.classList.add('menu-closed');
+
+    setTimeout(() => {
         header.classList.remove('menu-opend');
+    }, 500)
+
+    burger.classList.add('burger_horizontal');
+
+    setTimeout(() => {
         burger.classList.remove('burger_rotate');
-        header.classList.add('menu-closed');
-        document.body.style.overflow = '';
-    }
+    }, 500)
+
+    document.body.style.overflow = '';
+
+    burger.removeEventListener('click', closeMenu);
+    burger.addEventListener('click', showMenu);
 }
 
 
-burger.addEventListener('click', toggleMenu);
+burger.addEventListener('click', showMenu);
 
 // Данные животных
 
@@ -231,6 +250,8 @@ function createCardSet(set, cardSet) {
         cardButton.classList.add('button', 'button_secondary', 'card__button');
         cardButton.innerHTML = 'Learn more';
         card.append(cardButton);
+
+        card.setAttribute('data-number', cardSet[i]);
     }
 }
 
@@ -323,4 +344,102 @@ sliderInner.addEventListener('animationend', (animationEvent) => {
 
     sliderPrevButton.addEventListener('click', moveLeft);
     sliderNextButton.addEventListener('click', moveRight);
+})
+
+// Открытие попапа
+
+function showPopup(cardNumber) {
+    popup.classList.remove('popup-close');
+    popup.classList.add('popup__opend');
+
+    popup.innerHTML = '<button class="button-round button-round_close popup__close"><span class="visually-hidden">close</span></button>';
+    document.body.style.overflow = 'hidden';
+
+    let popupImage = document.createElement('img');
+    popupImage.src = petsData[cardNumber].img;
+    popupImage.alt = petsData[cardNumber].name
+    popupImage.classList.add('popup__image');
+    popup.append(popupImage);
+
+    let popupContent = document.createElement('div');
+    popupContent.classList.add('popup__content');
+    popup.append(popupContent);
+
+    let popupTitle = document.createElement('h3');
+    popupTitle.classList.add('popup__title', 'section-title');
+    popupTitle.innerHTML = petsData[cardNumber].name;
+    popupContent.append(popupTitle);
+
+    let popupSubtitle = document.createElement('div');
+    popupSubtitle.classList.add('popup__subtitle');
+    popupSubtitle.innerHTML = petsData[cardNumber].type + ' - ' + petsData[cardNumber].breed;
+    popupContent.append(popupSubtitle);
+
+    let popupText = document.createElement('p');
+    popupText.classList.add('popup__text');
+    popupText.innerHTML = petsData[cardNumber].description;
+    popupContent.append(popupText);
+
+    let popupList = document.createElement('ul');
+    popupList.classList.add('popup__list');
+    popupContent.append(popupList);
+
+    let listItem1 = document.createElement('li');
+    listItem1.classList.add('popup__li');
+    listItem1.innerHTML = `<span style="color: black">Age: ${petsData[cardNumber].age}</span>`;
+    popupList.append(listItem1);
+
+    let listItem2 = document.createElement('li');
+    listItem2.classList.add('popup__li');
+    listItem2.innerHTML = `<span style="color: black">Inoculations: ${petsData[cardNumber].inoculations}</span>`;
+    popupList.append(listItem2);
+
+    let listItem3 = document.createElement('li');
+    listItem3.classList.add('popup__li');
+    listItem3.innerHTML = `<span style="color: black">Diseaases: ${petsData[cardNumber].diseases}</span>`;
+    popupList.append(listItem3);
+
+    let listItem4 = document.createElement('li');
+    listItem4.classList.add('popup__li');
+    listItem4.innerHTML = `<span style="color: black">Parasites: ${petsData[cardNumber].parasites}</span>`;
+    popupList.append(listItem4);
+
+    let closePopup = popup.querySelector('.popup__close');
+    let fade = document.querySelector('.popup-fade');
+
+    fade.addEventListener('mouseover', () => {
+        closePopup.classList.add('popup-fade-hover');
+    })
+
+    fade.addEventListener('mouseout', () => {
+        closePopup.classList.remove('popup-fade-hover');
+    })
+
+    fade.addEventListener('click', () => {
+        setTimeout(() => {
+            popup.classList.remove('popup__opend');
+        }, 700);
+        popup.classList.add('popup-close');
+        popup.innerHTML = '<button class="button-round button-round_close popup__close"><span class="visually-hidden">close</span></button>';
+        document.body.style.overflow = '';
+    })
+
+    closePopup.addEventListener('click', () => {
+        setTimeout(() => {
+            popup.classList.remove('popup__opend');
+        }, 700);
+        popup.classList.add('popup-close');
+        popup.innerHTML = '<button class="button-round button-round_close popup__close"><span class="visually-hidden">close</span></button>';
+        document.body.style.overflow = '';
+    })
+}
+
+sliderInner.addEventListener('click', (evt) => {
+    if (evt.target.className === 'slider__item card') {
+        showPopup(evt.target.dataset.number);
+    }
+
+    if (evt.target.parentElement.className === 'slider__item card') {
+        showPopup(evt.target.parentElement.dataset.number);
+    }
 })

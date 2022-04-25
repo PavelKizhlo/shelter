@@ -38,9 +38,6 @@
         padding: 0 10px
         padding-top: 30px
         background-color: $dark-3xl
-        // transform: translateX(100%)
-        // transition-property: position
-        // transition-duration: 1s
         animation-name: slide-in
         animation-duration: 0.8s
         transition-timing-function: ease
@@ -53,10 +50,9 @@
 
 .menu-closed
     @include media-mobile
-        // transform: translateX(-100%)
-        // animation-name: slide-out
-        // animation-duration: 0.8s
-        // transition-timing-function: ease
+        animation-name: slide-out
+        animation-duration: 0.8s
+        transition-timing-function: ease
 
 .menu-opend~.menu-fade
     position: fixed
