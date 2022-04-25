@@ -19,6 +19,8 @@ let rightRandom;
 
 function showMenu() {
     header.classList.remove('menu-closed');
+    fade.classList.remove('menu-fade-remove');
+
     header.classList.add('menu-opend');
     header.addEventListener('click', (evt) => {
         if (evt.target.tagName === 'A') {
@@ -43,6 +45,7 @@ function showMenu() {
 
 function closeMenu() {
     header.classList.add('menu-closed');
+    fade.classList.add('menu-fade-remove');
 
     setTimeout(() => {
         header.classList.remove('menu-opend');
@@ -289,7 +292,6 @@ function showCards() {
         createSlider(1);
         sliderInner.style.left = '-360px'
     }
-
 }
 
 showCards()
@@ -418,8 +420,15 @@ function showPopup(cardNumber) {
     fade.addEventListener('click', () => {
         setTimeout(() => {
             popup.classList.remove('popup__opend');
-        }, 700);
+        }, 600);
+
         popup.classList.add('popup-close');
+        fade.classList.add('fade-remove');
+
+        setTimeout(() => {
+            fade.classList.remove('fade-remove');
+        }, 600)
+
         popup.innerHTML = '<button class="button-round button-round_close popup__close"><span class="visually-hidden">close</span></button>';
         document.body.style.overflow = '';
     })
@@ -427,12 +436,21 @@ function showPopup(cardNumber) {
     closePopup.addEventListener('click', () => {
         setTimeout(() => {
             popup.classList.remove('popup__opend');
-        }, 700);
+        }, 600);
+
         popup.classList.add('popup-close');
+        fade.classList.add('fade-remove');
+
+        setTimeout(() => {
+            fade.classList.remove('fade-remove');
+        }, 600)
+
         popup.innerHTML = '<button class="button-round button-round_close popup__close"><span class="visually-hidden">close</span></button>';
         document.body.style.overflow = '';
     })
 }
+
+// Всплытие попапа при нажатии на карточки слайдера
 
 sliderInner.addEventListener('click', (evt) => {
     if (evt.target.className === 'slider__item card') {

@@ -9,6 +9,12 @@ const leftSet = document.querySelector('.slider__left-set');
 const activeSet = document.querySelector('.slider__active-set');
 const rightSet = document.querySelector('.slider__right-set');
 const popup = document.querySelector('.popup');
+const petsContainer = document.querySelector('.our-pets__item-container');
+const paginationFirst = document.querySelector('.pagination__first');
+const paginationPrev = document.querySelector('.pagination__prev');
+const paginationActive = document.querySelector('.pagination__active');
+const paginationNext = document.querySelector('.pagination__next');
+const paginationLast = document.querySelector('.pagination__last');
 
 let activeRandom;
 let leftRan
@@ -19,6 +25,8 @@ let rightRandom;
 
 function showMenu() {
     header.classList.remove('menu-closed');
+    fade.classList.remove('menu-fade-remove');
+
     header.classList.add('menu-opend');
     header.addEventListener('click', (evt) => {
         if (evt.target.tagName === 'A') {
@@ -43,6 +51,7 @@ function showMenu() {
 
 function closeMenu() {
     header.classList.add('menu-closed');
+    fade.classList.add('menu-fade-remove');
 
     setTimeout(() => {
         header.classList.remove('menu-opend');
@@ -210,14 +219,66 @@ const petsData = [
 ]
 
 
-const popupButton = document.querySelector('.card');
+// Открытие попапа
 
-function showPopup() {
+function showPopup(cardNumber) {
+    popup.classList.remove('popup-close');
     popup.classList.add('popup__opend');
-    let fade = document.querySelector('.popup-fade');
-    let closePopup = popup.querySelector('.popup__close');
 
+    popup.innerHTML = '<button class="button-round button-round_close popup__close"><span class="visually-hidden">close</span></button>';
     document.body.style.overflow = 'hidden';
+
+    let popupImage = document.createElement('img');
+    popupImage.src = petsData[cardNumber].img;
+    popupImage.alt = petsData[cardNumber].name
+    popupImage.classList.add('popup__image');
+    popup.append(popupImage);
+
+    let popupContent = document.createElement('div');
+    popupContent.classList.add('popup__content');
+    popup.append(popupContent);
+
+    let popupTitle = document.createElement('h3');
+    popupTitle.classList.add('popup__title', 'section-title');
+    popupTitle.innerHTML = petsData[cardNumber].name;
+    popupContent.append(popupTitle);
+
+    let popupSubtitle = document.createElement('div');
+    popupSubtitle.classList.add('popup__subtitle');
+    popupSubtitle.innerHTML = petsData[cardNumber].type + ' - ' + petsData[cardNumber].breed;
+    popupContent.append(popupSubtitle);
+
+    let popupText = document.createElement('p');
+    popupText.classList.add('popup__text');
+    popupText.innerHTML = petsData[cardNumber].description;
+    popupContent.append(popupText);
+
+    let popupList = document.createElement('ul');
+    popupList.classList.add('popup__list');
+    popupContent.append(popupList);
+
+    let listItem1 = document.createElement('li');
+    listItem1.classList.add('popup__li');
+    listItem1.innerHTML = `<span style="color: black">Age: ${petsData[cardNumber].age}</span>`;
+    popupList.append(listItem1);
+
+    let listItem2 = document.createElement('li');
+    listItem2.classList.add('popup__li');
+    listItem2.innerHTML = `<span style="color: black">Inoculations: ${petsData[cardNumber].inoculations}</span>`;
+    popupList.append(listItem2);
+
+    let listItem3 = document.createElement('li');
+    listItem3.classList.add('popup__li');
+    listItem3.innerHTML = `<span style="color: black">Diseaases: ${petsData[cardNumber].diseases}</span>`;
+    popupList.append(listItem3);
+
+    let listItem4 = document.createElement('li');
+    listItem4.classList.add('popup__li');
+    listItem4.innerHTML = `<span style="color: black">Parasites: ${petsData[cardNumber].parasites}</span>`;
+    popupList.append(listItem4);
+
+    let closePopup = popup.querySelector('.popup__close');
+    let fade = document.querySelector('.popup-fade');
 
     fade.addEventListener('mouseover', () => {
         closePopup.classList.add('popup-fade-hover');
@@ -228,14 +289,214 @@ function showPopup() {
     })
 
     fade.addEventListener('click', () => {
-        popup.classList.remove('popup__opend');
+        setTimeout(() => {
+            popup.classList.remove('popup__opend');
+        }, 600);
+
+        popup.classList.add('popup-close');
+        fade.classList.add('fade-remove');
+
+        setTimeout(() => {
+            fade.classList.remove('fade-remove');
+        }, 600)
+
+        popup.innerHTML = '<button class="button-round button-round_close popup__close"><span class="visually-hidden">close</span></button>';
         document.body.style.overflow = '';
     })
 
     closePopup.addEventListener('click', () => {
-        popup.classList.remove('popup__opend');
+        setTimeout(() => {
+            popup.classList.remove('popup__opend');
+        }, 600);
+
+        popup.classList.add('popup-close');
+        fade.classList.add('fade-remove');
+
+        setTimeout(() => {
+            fade.classList.remove('fade-remove');
+        }, 600)
+
+        popup.innerHTML = '<button class="button-round button-round_close popup__close"><span class="visually-hidden">close</span></button>';
         document.body.style.overflow = '';
     })
 }
 
-popupButton.addEventListener('click', showPopup);
+// Генерация массива указанной длинны из неповторяющихся чисел в диапазоне соответствующем количеству животных
+
+function getOnePage(number) {
+    let cardSet = [];
+
+    for (let i = 0; i < number; i++) {
+        let randomCard = Math.floor(Math.random() * petsData.length);
+
+        while (cardSet.includes(randomCard)) {
+            randomCard = Math.floor(Math.random() * petsData.length);
+        }
+
+        cardSet.push(randomCard);
+    }
+
+    return cardSet;
+}
+
+// Генерация массива наборов страниц
+
+function getAllPages(screenWidth) {
+    allPages = [];
+
+    if (CLIENT_WIDTH >= 1280) {
+        for (let i = 0; i < 6; i++) {
+            allPages.push(getOnePage(8));
+        }
+    } else if (CLIENT_WIDTH >= 768) {
+        for (let i = 0; i < 8; i++) {
+            allPages.push(getOnePage(8));
+        }
+    } else {
+        for (let i = 0; i < 16; i++) {
+            allPages.push(getOnePage(3));
+        }
+    }
+
+    return allPages;
+}
+
+// Создание карточек в указанном контейнере (set), на основе массива числел (cardSet)
+
+function createPage(cardSet) {
+    for (let i = 0; i < cardSet.length; i++) {
+        let card = document.createElement('div');
+        card.classList.add('our-pets__item', 'card');
+        petsContainer.append(card);
+
+        let cardImage = document.createElement('img');
+        cardImage.src = petsData[cardSet[i]].img;
+        cardImage.alt = petsData[cardSet[i]].name;
+        cardImage.classList.add('card__image');
+        card.append(cardImage);
+
+        let cardTitle = document.createElement('span');
+        cardTitle.classList.add('card__title');
+        cardTitle.innerHTML = petsData[cardSet[i]].name;
+        card.append(cardTitle);
+
+        let cardButton = document.createElement('button');
+        cardButton.classList.add('button', 'button_secondary', 'card__button');
+        cardButton.innerHTML = 'Learn more';
+        card.append(cardButton);
+
+        card.setAttribute('data-number', cardSet[i]);
+    }
+}
+
+// Создание всех страниц с пагинацией
+
+function createAllPages() {
+    let allPages = getAllPages();
+    let currentPage = 0;
+
+    paginationActive.innerHTML = currentPage + 1;
+    createPage(allPages[currentPage]);
+
+    // Первая страница
+
+    paginationFirst.addEventListener('click', () => {
+        currentPage = 0;
+        paginationActive.innerHTML = currentPage + 1;
+        petsContainer.innerHTML = '';
+        createPage(allPages[currentPage])
+
+        paginationFirst.disabled = true;
+        paginationPrev.disabled = true;
+        paginationFirst.classList.add('button-round_inactive');
+        paginationPrev.classList.add('button-round_inactive');
+
+        paginationNext.disabled = false;
+        paginationLast.disabled = false;
+        paginationNext.classList.remove('button-round_inactive');
+        paginationLast.classList.remove('button-round_inactive');
+    })
+
+    // Предыдущая страница
+
+    paginationPrev.addEventListener('click', () => {
+        currentPage--;
+        paginationActive.innerHTML = currentPage + 1;
+        petsContainer.innerHTML = '';
+        createPage(allPages[currentPage])
+
+        paginationNext.disabled = false;
+        paginationNext.classList.remove('button-round_inactive');
+
+        paginationLast.disabled = false;
+        paginationLast.classList.remove('button-round_inactive');
+
+        if (currentPage == 0) {
+            paginationFirst.disabled = true;
+            paginationPrev.disabled = true;
+            paginationFirst.classList.add('button-round_inactive');
+            paginationPrev.classList.add('button-round_inactive');
+        }
+    })
+
+    // Следующая страница
+
+    paginationNext.addEventListener('click', () => {
+        currentPage++;
+        paginationActive.innerHTML = currentPage + 1;
+        petsContainer.innerHTML = '';
+        createPage(allPages[currentPage])
+
+        paginationFirst.disabled = false;
+        paginationFirst.classList.remove('button-round_inactive');
+
+
+        paginationPrev.disabled = false;
+        paginationPrev.classList.remove('button-round_inactive');
+
+
+        if (currentPage == allPages.length - 1) {
+            paginationNext.disabled = true;
+            paginationLast.disabled = true;
+            paginationNext.classList.add('button-round_inactive');
+            paginationLast.classList.add('button-round_inactive');
+        }
+    })
+
+    // Последняя страница
+
+    paginationLast.addEventListener('click', () => {
+        currentPage = allPages.length - 1;
+        paginationActive.innerHTML = currentPage + 1;
+        petsContainer.innerHTML = '';
+        createPage(allPages[currentPage])
+
+        paginationFirst.classList.remove('button-round_inactive');
+        paginationPrev.classList.remove('button-round_inactive');
+
+        paginationNext.disabled = true;
+        paginationLast.disabled = true;
+        paginationNext.classList.add('button-round_inactive');
+        paginationLast.classList.add('button-round_inactive');
+
+        paginationFirst.disabled = false;
+        paginationPrev.disabled = false;
+    })
+}
+
+createAllPages()
+
+
+
+
+
+
+petsContainer.addEventListener('click', (evt) => {
+    if (evt.target.className === 'our-pets__item card') {
+        showPopup(evt.target.dataset.number);
+    }
+
+    if (evt.target.parentElement.className === 'our-pets__item card') {
+        showPopup(evt.target.parentElement.dataset.number);
+    }
+})

@@ -121,6 +121,24 @@
   }
 }
 
+@-webkit-keyframes fade-remove {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-remove {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @-webkit-keyframes move-left {
   from {
     left: -1080px;
@@ -869,6 +887,13 @@ img {
   z-index: 1;
   -webkit-animation-name: fade;
           animation-name: fade;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
+}
+
+.menu-opend ~ .menu-fade-remove {
+  -webkit-animation-name: fade-remove;
+          animation-name: fade-remove;
   -webkit-animation-duration: 0.8s;
           animation-duration: 0.8s;
 }
@@ -1622,6 +1647,13 @@ img {
   cursor: pointer;
   -webkit-animation-name: fade;
           animation-name: fade;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
+}
+
+.popup__opend ~ .fade-remove {
+  -webkit-animation-name: fade-remove;
+          animation-name: fade-remove;
   -webkit-animation-duration: 0.8s;
           animation-duration: 0.8s;
 }
