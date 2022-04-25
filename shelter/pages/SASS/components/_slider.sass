@@ -17,23 +17,24 @@
         justify-content: center
         order: 1
     &__inner
+        position: relative
         display: flex
         @include media-mobile
             margin-bottom: 20px
     &__item
         margin-right: 90px
         @include media-tablet
-            margin-right: 5.21vw
-        &:nth-child(3)
-            margin-right: 0
-            @include media-tablet
-                display: none
-            @include media-mobile
-                display: none
-        &:nth-child(2)
-            @include media-tablet
-                margin-right: 0
-            @include media-mobile
-                display: none
+            margin-right: 40px
+    &__wrapper
+        overflow: hidden
+        width: 990px
+        @include media-tablet
+            width: 580px
         @include media-mobile
-            margin-right: 0
+            width: 270px
+    &__left-set
+        display: flex
+    &__active-set
+        display: flex
+    &__right-set
+        display: flex
