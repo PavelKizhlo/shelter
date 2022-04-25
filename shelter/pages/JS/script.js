@@ -4,12 +4,10 @@ const burger = document.querySelector('.burger');
 const fade = document.querySelector('.menu-fade');
 const sliderPrevButton = document.querySelector('.slider__prev')
 const sliderNextButton = document.querySelector('.slider__next')
-const sliderWrapper = document.querySelector('.slider__wrapper');
 const sliderInner = document.querySelector('.slider__inner');
 const leftSet = document.querySelector('.slider__left-set');
 const activeSet = document.querySelector('.slider__active-set');
 const rightSet = document.querySelector('.slider__right-set');
-const slideSets = document.querySelectorAll('.slide-set');
 
 let activeRandom;
 let leftRan
@@ -46,7 +44,7 @@ function closeMenu(evt) {
 
 burger.addEventListener('click', toggleMenu);
 
-// Cards
+// Данные животных
 
 const petsData = [
     {
@@ -192,6 +190,7 @@ const petsData = [
     }
 ]
 
+// Генерация массива указанной длинны из неповторяющихся чисел в диапазоне соответствующем количеству животных
 
 function getRandomCards(number) {
     let cardSet = [];
@@ -209,6 +208,7 @@ function getRandomCards(number) {
     return cardSet;
 }
 
+// Создание карточек в указанном контейнере (set), на основе массива числел (cardSet)
 
 function createCardSet(set, cardSet) {
     for (let i = 0; i < cardSet.length; i++) {
@@ -234,6 +234,8 @@ function createCardSet(set, cardSet) {
     }
 }
 
+// Создание начального состояния слайдера (из указзанного количества карточек) при загрузке страницы
+// Карточки в трех блоках не повторяются 
 
 function createSlider(number) {
     activeRandom = getRandomCards(number);
@@ -253,6 +255,7 @@ function createSlider(number) {
     createCardSet(rightSet, rightRandom);
 }
 
+// Отрисовка слайдера на разных экранах
 
 function showCards() {
     if (CLIENT_WIDTH >= 1280) {
@@ -270,6 +273,8 @@ function showCards() {
 
 showCards()
 
+// Перемещение блока слайдера влево и вправо
+
 function moveLeft() {
     sliderInner.classList.add('transition-left');
     sliderPrevButton.removeEventListener('click', moveLeft);
@@ -284,6 +289,10 @@ function moveRight() {
 
 sliderPrevButton.addEventListener('click', moveLeft);
 sliderNextButton.addEventListener('click', moveRight);
+
+// Обработчик назначенный на конец анимации. Класс, отвечающий за анимацию удаляется.
+// Карточки левого или правого блока становятся карточками текущего блока.
+// Для того блока в чью сторону был осуществлен переход, создаётся новый набор карточек, отличных от карточе текущего блока
 
 sliderInner.addEventListener('animationend', (animationEvent) => {
     if (animationEvent.animationName === 'move-left' || animationEvent.animationName === 'move-left-mobile' || animationEvent.animationName === 'move-left-tablet') {
