@@ -106,3 +106,4 @@ dist
 # System file
 .DS_Store
 
+.idea/

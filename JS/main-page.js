@@ -296,6 +296,8 @@ function showCards() {
 
 showCards()
 
+window.addEventListener('resize', () => console.log(CLIENT_WIDTH));
+
 // Перемещение блока слайдера влево и вправо
 
 function moveLeft() {
